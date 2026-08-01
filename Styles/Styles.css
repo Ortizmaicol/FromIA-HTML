@@ -20,6 +20,13 @@ body {
     justify-content: center;
     position: relative;
     }
+    .Encabezado-navegacion{
+      width: 50%;
+      justify-content:center;
+    }
+    .Encabezado-navegacion-Menu{
+      visibility:collapse;
+    }
 }
 .Encabezado-Img{
     width: 45px;
@@ -92,26 +99,22 @@ body {
 .Bienvenida {
   position: relative;
   width: 100%;
-  min-height: calc(100vh - 60px);
+  min-height: calc(100dvh - 60px);
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   padding: 40px 20px;
 }
-
 .halo {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: clamp(360px, 78vmin, 780px);
-  height: clamp(360px, 78vmin, 780px);
+  width: clamp(220px, 70vmin, 780px);
+  height: clamp(220px, 70vmin, 780px);
   filter: blur(26px);
 }
-
-/* ===== azules (sincronizados: misma animación spin-blue) ===== */
-
 .circle-top {
   position: absolute;
   top: 50%;
@@ -149,9 +152,6 @@ body {
   transform: translate(-50%, -50%) rotate(0deg);
   animation: spin-blue 12s linear infinite;
 }
-
-/* ===== separador negro entre azules y morados ===== */
-
 .separator-ring {
   position: absolute;
   top: 50%;
@@ -163,9 +163,6 @@ body {
   background: #000;
   filter: blur(14px);
 }
-
-/* ===== morados (sincronizados: misma animación spin-purple) ===== */
-
 .circle-left {
   position: absolute;
   top: 50%;
@@ -203,9 +200,6 @@ body {
   transform: translate(-50%, -50%) rotate(0deg);
   animation: spin-purple 10s linear infinite;
 }
-
-/* ===== centro negro ===== */
-
 .center-mask {
   position: absolute;
   top: 50%;
@@ -227,7 +221,97 @@ body {
   from { transform: translate(-50%, -50%) rotate(0deg); }
   to   { transform: translate(-50%, -50%) rotate(-360deg); }
 }
-/* contenido central */
+/* Móviles pequeños */
+@media (max-width: 480px) {
+  .halo {
+    filter: blur(14px);
+  }
+  .separator-ring {
+    filter: blur(8px);
+  }
+  .center-mask {
+    filter: blur(10px);
+  }
+}
+/* 1. Usa 100dvh en vez de 100vh — dvh sí considera la barra de direcciones del móvil */
+.Bienvenida {
+  position: relative;
+  width: 100%;
+  min-height: calc(100dvh - 60px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 40px 20px;
+}
+
+/* 2. Baja el mínimo del halo e incluye vw, para que en pantallas angostas
+   Y cortas a la vez (como móvil) no se quede pegado a 360px */
+.halo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(220px, 70vmin, 780px);
+  height: clamp(220px, 70vmin, 780px);
+  filter: blur(26px);
+}
+
+.energy-particles {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(200px, 63vmin, 700px);
+  height: clamp(200px, 63vmin, 700px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+@media (max-width: 480px) {
+  .Bienvenida {
+    min-height: auto;
+    padding: 30px 16px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .halo {
+    filter: blur(18px);
+  }
+  .separator-ring {
+    filter: blur(10px);
+  }
+  .center-mask {
+    filter: blur(14px);
+  }
+}
+
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  .halo {
+    filter: blur(26px);
+  }
+  .separator-ring {
+    filter: blur(14px);
+  }
+  .center-mask {
+    filter: blur(20px);
+  }
+}
+
+@media (min-width: 1201px) {
+  .halo {
+    filter: blur(34px);
+  }
+  .separator-ring {
+    filter: blur(18px);
+  }
+  .center-mask {
+    filter: blur(26px);
+  }
+}
+
 .content {
   position: relative;
   z-index: 2;
@@ -296,11 +380,10 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: clamp(320px, 70vmin, 700px);
-  height: clamp(320px, 70vmin, 700px);
+  width: clamp(200px, 63vmin, 700px);
+  height: clamp(200px, 63vmin, 700px);
   z-index: 1;
   pointer-events: none;
-  /* SIN filter: blur aquí */
 }
 
 .particle {
