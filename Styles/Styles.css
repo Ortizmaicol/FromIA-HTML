@@ -414,3 +414,129 @@ body {
   75%  { opacity: 1; }
   100% { top: 2%; opacity: 0; }
 }
+
+/* Estilos Oscuros de Autenticación */
+body.auth-body {
+  background-color: #000000;
+  color: #ffffff;
+  font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+  min-height: 100vh;
+}
+
+/* Títulos Superiores */
+.auth-main-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+}
+
+.auth-subtitle {
+  color: #a0a0a0;
+  font-size: 0.95rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Custom Switch Toggle */
+.custom-switch .form-check-input {
+  width: 3.2em;
+  height: 1.7em;
+  background-color: #333;
+  border-color: #555;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+  cursor: pointer;
+}
+
+.custom-switch .form-check-input:checked {
+  background-color: #6f42c1; /* Tono morado como en la imagen */
+  border-color: #6f42c1;
+}
+
+/* Contenedor de la Tarjeta Principal */
+.auth-card-container {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.auth-card {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #111111;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+}
+
+/* Columna de Formulario */
+.auth-form-side {
+  padding: 3rem 2.5rem;
+  background-color: #121212;
+}
+
+.brand-header h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.brand-header span {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+/* Inputs Oscuros */
+.dark-input {
+  background-color: #1c1c1c;
+  border: 1px solid #333;
+  color: #ffffff;
+  border-radius: 6px;
+  padding: 10px 14px;
+}
+
+.dark-input:focus {
+  background-color: #222;
+  border-color: #336699;
+  color: #fff;
+  box-shadow: 0 0 0 0.25rem rgba(51, 102, 153, 0.25);
+}
+
+.dark-input::placeholder {
+  color: #666;
+}
+
+/* Botón Login/Registro */
+.btn-auth-submit {
+  background-color: #336699;
+  color: #ffffff;
+  border: none;
+  border-radius: 20px;
+  padding: 10px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-auth-submit:hover {
+  background-color: #244b73;
+  color: #fff;
+}
+
+/* Columna Derecha de la Ilustración */
+.auth-image-side {
+  background: radial-gradient(circle at center, #180b38 0%, #080314 100%);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 3rem;
+  position: relative;
+}
+
+.pattern-img {
+  max-width: 280px;
+  height: auto;
+  filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.15));
+}
+
+.pattern-brand-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #ffffff;
+}
