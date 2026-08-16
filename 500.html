@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FormAI - 500 Internal Server Error</title>
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;900&display=swap"
+    rel="stylesheet"
+  />
+  <!-- Estilos Base -->
+  <link rel="stylesheet" href="Styles/Styles.css" />
+
+  <style>
+    body {
+      background-color: #000000;
+      color: #ffffff;
+      font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .error-code {
+      font-family: "Montserrat", sans-serif;
+      font-size: clamp(5rem, 12vw, 9rem);
+      font-weight: 900;
+      color: #ff3b30; /* Rojo/Naranja de alerta de servidor */
+      margin: 0;
+      line-height: 1;
+      text-shadow: 0 0 25px rgba(255, 59, 48, 0.3);
+    }
+
+    .error-title {
+      font-family: "Montserrat", sans-serif;
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 700;
+      margin: 1.5rem 0 0.8rem;
+    }
+
+    .error-desc {
+      color: #a0a0a0;
+      font-size: 0.95rem;
+      max-width: 480px;
+      line-height: 1.5;
+      margin-bottom: 2.2rem;
+    }
+
+    .btn-back {
+      background-color: #336699;
+      color: #ffffff;
+      padding: 10px 24px;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: background-color 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-back:hover {
+      background-color: #244b73;
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 class="error-code">500</h1>
+  <h2 class="error-title">Error Interno del Servidor</h2>
+  <p class="error-desc">
+    Lo sentimos, ocurrió un problema inesperado en los servidores de FormAI al procesar la sección "Nosotros". Estamos trabajando para solucionarlo.
+  </p>
+  <a href="index.html" class="btn-back">Volver al Inicio</a>
+
+</body>
+</html>

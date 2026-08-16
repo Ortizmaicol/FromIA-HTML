@@ -1,307 +1,359 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FormAI - IniciarSesión / Registrarse</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FormAI - IniciarSesión / Registrarse</title>
 
-    <!-- Bootstrap 5 CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <!-- Bootstrap Icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
-    />
-    <!-- Estilos de la landing + Auth -->
-    <link rel="stylesheet" href="Styles.css" />
-    <link rel="stylesheet" href="css/auth-dark.css" />
+  <!-- Bootstrap 5 CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <!-- Bootstrap Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+  />
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;900&display=swap"
+    rel="stylesheet"
+  />
+  <!-- SweetAlert2 CSS -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"
+  />
+  <!-- Estilos Base -->
+  <link rel="stylesheet" href="Styles/Styles.css" />
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
-  </head>
-  <body class="auth-body">
-    <!-- Navbar similar a index_2 -->
-    <nav class="Encabezado">
-      <div style="margin-left: 30px;">
-        <a href="index_2.html">
-          <img
-            class="Encabezado-Img"
-            src="/Img/IconoFormAIDark.avif"
-            alt="IconoFormAI"
-          />
-        </a>
-      </div>
-      <div class="Encabezado-navegacion">
-        <p class="Encabezado-navegacion-Title">Form-AI</p>
-        <div class="Encabezado-navegacion-Menu">
-          <div class="Menu-Item">
-            <a href="index_2.html">Inicio</a>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-              <line x1="7" y1="17" x2="17" y2="7"></line>
-              <polyline points="7 7 17 7 17 17"></polyline>
-            </svg>
-          </div>
+  <style>
+    /* ==========================================
+       ESTILOS ESPECÍFICOS DE AUTENTICACIÓN
+       ========================================== */
+    body {
+      background-color: #000000;
+      color: #ffffff;
+      font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+      min-height: 100vh;
+      margin: 0;
+      padding-bottom: 60px;
+    }
+
+    .auth-container {
+      max-width: 920px;
+      margin: 2rem auto;
+      padding: 0 15px;
+    }
+
+    .auth-main-title {
+      font-family: "Montserrat", sans-serif;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: -0.5px;
+    }
+
+    .auth-subtitle {
+      color: #a0a0a0;
+      font-size: 0.95rem;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    /* SWITCH / TOGGLE LOGIN-REGISTRO */
+    .custom-switch .form-check-input {
+      width: 3.2em;
+      height: 1.7em;
+      background-color: #333333;
+      border-color: #555555;
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+      cursor: pointer;
+    }
+
+    .custom-switch .form-check-input:checked {
+      background-color: #6f42c1;
+      border-color: #6f42c1;
+    }
+
+    /* TARJETA CONTENEDORA FORMULARIO E IMAGEN */
+    .auth-card {
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 14px;
+      overflow: hidden;
+      background-color: #111111;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
+    }
+
+    .auth-form-side {
+      padding: 2.5rem 2rem;
+      background-color: #121212;
+    }
+
+    .brand-header h2 {
+      font-family: "Montserrat", sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+
+    .brand-header span {
+      font-size: 0.85rem;
+      color: #888888;
+    }
+
+    .dark-input {
+      background-color: #1c1c1c;
+      border: 1px solid #333333;
+      color: #ffffff;
+      border-radius: 6px;
+      padding: 10px 14px;
+    }
+
+    .dark-input:focus {
+      background-color: #222222;
+      border-color: #336699;
+      color: #ffffff;
+      box-shadow: 0 0 0 0.25rem rgba(51, 102, 153, 0.25);
+    }
+
+    .dark-input::placeholder {
+      color: #666666;
+    }
+
+    .btn-auth-submit {
+      background-color: #336699;
+      color: #ffffff;
+      border: none;
+      border-radius: 20px;
+      padding: 10px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .btn-auth-submit:hover {
+      background-color: #244b73;
+      color: #ffffff;
+    }
+
+    /* LADO DERECHO CON DEGRADADO E IMAGEN DE CORTE */
+    .auth-image-side {
+      background: radial-gradient(circle at center, #180b38 0%, #080314 100%);
+      border-left: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .pattern-img {
+      max-width: 260px;
+      width: 100%;
+      height: auto;
+      filter: drop-shadow(0 0 15px rgba(111, 66, 193, 0.3));
+    }
+
+    /* MENSAJES DE ERROR VISIBLES EN ROJO */
+    .invalid-feedback {
+      font-size: 0.78rem;
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BARRA DE NAVEGACIÓN MODULAR (Shadow DOM) -->
+  <div id="navbar-container"></div>
+
+  <main class="auth-container">
+    
+    <!-- ENCABEZADO Y TOGGLE -->
+    <div class="text-center mb-4">
+      <h1 class="auth-main-title mb-2">IniciarSesion/Registrarse</h1>
+      <p class="auth-subtitle mb-3">
+        Con el botón de selección puedes elegir si quieres iniciar sesión o crear una nueva cuenta.
+      </p>
+
+      <!-- SWITCH TOGGLE -->
+      <div class="d-inline-flex align-items-center gap-3">
+        <span id="labelLogin" class="fw-semibold text-white">IniciarSesion</span>
+        <div class="form-check form-switch custom-switch m-0">
+          <input class="form-check-input" type="checkbox" role="switch" id="authToggle" />
         </div>
+        <span id="labelRegister" class="fw-semibold text-white-50">Registrarse</span>
       </div>
-    </nav>
+    </div>
 
-    <main class="auth-wrapper container py-5">
-      <!-- Encabezado Central -->
-      <div class="text-center mb-4">
-        <h1 class="auth-main-title">IniciarSesion/Registrarse</h1>
-        <p class="auth-subtitle">
-          con el botón de selección puedes elegir si quieres iniciar sesión o
-          crear una nueva cuenta
-        </p>
-
-        <!-- Toggle Switch -->
-        <div
-          class="auth-toggle-container d-inline-flex align-items-center mt-3"
-        >
-          <span
-            class="toggle-label me-3"
-            id="lblLogin"
-            style="color: #fff; font-weight: 600;"
-            >IniciarSesion</span
-          >
-          <div class="form-check form-switch custom-switch m-0">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              role="switch"
-              id="authToggle"
-            />
+    <!-- TARJETA PRINCIPAL (FORMULARIO + ILUSTRACIÓN) -->
+    <div class="auth-card">
+      <div class="row g-0">
+        
+        <!-- COLUMNA IZQUIERDA: FORMULARIOS -->
+        <div class="col-12 col-lg-7 auth-form-side">
+          <div class="brand-header mb-4">
+            <h2>FormAI</h2>
+            <span>FormAI</span>
           </div>
-          <span class="toggle-label ms-3" id="lblRegister" style="color: #888;"
-            >Registrarse</span
-          >
-        </div>
-      </div>
 
-      <!-- Tarjeta Split Principal -->
-      <div class="auth-card-container">
-        <div class="row g-0 auth-card">
-          <!-- Columna Izquierda: Formularios -->
-          <div class="col-lg-6 auth-form-side">
-            <!-- VISTA LOGIN -->
-            <div id="loginView">
-              <div class="brand-header text-center mb-4">
-                <h2>FormAI</h2>
-                <span>FormAI</span>
-              </div>
-
-              <form id="loginForm" class="needs-validation" novalidate>
-                <!-- Correo -->
-                <div class="form-group mb-4">
-                  <label for="loginEmail" class="form-label">
-                    <i class="bi bi-envelope me-2"></i>Correo
-                  </label>
-                  <input
-                    type="email"
-                    class="form-control dark-input"
-                    id="loginEmail"
-                    placeholder="FormAI@gmail.com"
-                    required
-                  />
-                  <div class="invalid-feedback">
-                    Ingresa un correo válido.
-                  </div>
-                </div>
-
-                <!-- Contraseña -->
-                <div class="form-group mb-4">
-                  <label for="loginPassword" class="form-label">Contraseña</label>
-                  <input
-                    type="password"
-                    class="form-control dark-input"
-                    id="loginPassword"
-                    placeholder="************"
-                    required
-                  />
-                  <div class="invalid-feedback">
-                    Por favor escribe tu contraseña.
-                  </div>
-                </div>
-
-                <div class="text-center mt-4">
-                  <button type="submit" class="btn btn-auth-submit w-100">
-                    Login
-                  </button>
-                </div>
-              </form>
+          <!-- FORMULARIO DE INICIO DE SESIÓN -->
+          <form id="loginForm" novalidate>
+            <div class="mb-3">
+              <label for="loginEmail" class="form-label text-white-50"><i class="bi bi-envelope me-1"></i> Correo</label>
+              <input
+                type="email"
+                class="form-control dark-input"
+                id="loginEmail"
+                placeholder="FormAI@gmail.com"
+                required
+              />
+              <div class="invalid-feedback"></div>
             </div>
 
-            <!-- VISTA REGISTRO (Oculta por defecto) -->
-            <div id="registerView" style="display: none;">
-              <div class="brand-header text-center mb-4">
-                <h2>Crear Cuenta</h2>
-                <span>FormAI</span>
-              </div>
-
-              <form id="registerForm" class="needs-validation" novalidate>
-                <div class="form-group mb-3">
-                  <label for="regNombre" class="form-label"
-                    ><i class="bi bi-person me-2"></i>Nombre</label
-                  >
-                  <input
-                    type="text"
-                    class="form-control dark-input"
-                    id="regNombre"
-                    placeholder="Juan"
-                    pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{2,30}"
-                    required
-                  />
-                </div>
-
-                <div class="form-group mb-3">
-                  <label for="regTelefono" class="form-label"
-                    ><i class="bi bi-telephone me-2"></i>Teléfono</label
-                  >
-                  <input
-                    type="tel"
-                    class="form-control dark-input"
-                    id="regTelefono"
-                    placeholder="3001234567"
-                    pattern="3[0-9]{9}"
-                    required
-                  />
-                </div>
-
-                <div class="form-group mb-3">
-                  <label for="regEmail" class="form-label"
-                    ><i class="bi bi-envelope me-2"></i>Correo
-                    Electrónico</label
-                  >
-                  <input
-                    type="email"
-                    class="form-control dark-input"
-                    id="regEmail"
-                    placeholder="FormAI@gmail.com"
-                    required
-                  />
-                </div>
-
-                <div class="form-group mb-3">
-                  <label for="regPassword" class="form-label">Contraseña</label>
-                  <input
-                    type="password"
-                    class="form-control dark-input"
-                    id="regPassword"
-                    placeholder="************"
-                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                    required
-                  />
-                </div>
-
-                <div class="text-center mt-4">
-                  <button type="submit" class="btn btn-auth-submit w-100">
-                    Registrarse
-                  </button>
-                </div>
-              </form>
+            <div class="mb-4">
+              <label for="loginPassword" class="form-label text-white-50"><i class="bi bi-lock me-1"></i> Contraseña</label>
+              <input
+                type="password"
+                class="form-control dark-input"
+                id="loginPassword"
+                placeholder="**********"
+                required
+              />
+              <div class="invalid-feedback"></div>
             </div>
-          </div>
 
-          <!-- Columna Derecha: Ilustración Patrón -->
-          <div
-            class="col-lg-6 auth-image-side d-flex flex-column align-items-center justify-content-center"
-          >
-            <img
-              src="patron.png"
-              alt="Patrón Moldería FormAI"
-              class="img-fluid pattern-img"
-            />
-            <h3 class="pattern-brand-title mt-3">FormAI</h3>
-          </div>
+            <button type="submit" class="btn btn-auth-submit w-100">
+              Iniciar Sesión
+            </button>
+          </form>
+
+          <!-- FORMULARIO DE REGISTRO (Oculto por defecto) -->
+          <form id="registerForm" style="display: none;" novalidate>
+            <div class="row g-2 mb-3">
+              <div class="col-6">
+                <label for="regNombre" class="form-label text-white-50">Nombre</label>
+                <input type="text" class="form-control dark-input" id="regNombre" placeholder="Laura" required />
+                <div class="invalid-feedback"></div>
+              </div>
+              <div class="col-6">
+                <label for="regApellido" class="form-label text-white-50">Apellido</label>
+                <input type="text" class="form-control dark-input" id="regApellido" placeholder="Díaz" required />
+                <div class="invalid-feedback"></div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="regTelefono" class="form-label text-white-50">Teléfono</label>
+              <input type="tel" class="form-control dark-input" id="regTelefono" placeholder="3001234567" required />
+              <div class="invalid-feedback"></div>
+            </div>
+
+            <div class="mb-3">
+              <label for="regEmail" class="form-label text-white-50">Correo Electrónico</label>
+              <input type="email" class="form-control dark-input" id="regEmail" placeholder="usuario@gmail.com" required />
+              <div class="invalid-feedback"></div>
+            </div>
+
+            <div class="mb-3">
+              <label for="regPassword" class="form-label text-white-50">Contraseña</label>
+              <input type="password" class="form-control dark-input" id="regPassword" placeholder="Mínimo 8 caracteres" required />
+              <div class="invalid-feedback"></div>
+            </div>
+
+            <div class="mb-4">
+              <label for="regConfirmPassword" class="form-label text-white-50">Confirmar Contraseña</label>
+              <input type="password" class="form-control dark-input" id="regConfirmPassword" placeholder="Repite tu contraseña" required />
+              <div class="invalid-feedback"></div>
+            </div>
+
+            <button type="submit" class="btn btn-auth-submit w-100">
+              Crear Cuenta
+            </button>
+          </form>
+
         </div>
+
+        <!-- COLUMNA DERECHA: ILUSTRACIÓN/MOLDERÍA -->
+        <div class="col-12 col-lg-5 auth-image-side d-none d-lg-flex">
+          <img src="Img/IconoFormAIDark.avif" alt="Patrón de Diseño FormAI" class="pattern-img" />
+        </div>
+
       </div>
-    </main>
+    </div>
 
-    <!-- Script de Switch y Validación en Tiempo Real -->
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        const toggle = document.getElementById('authToggle');
-        const loginView = document.getElementById('loginView');
-        const registerView = document.getElementById('registerView');
-        const lblLogin = document.getElementById('lblLogin');
-        const lblRegister = document.getElementById('lblRegister');
+  </main>
 
-        // 1. Lógica del Switch (Login / Registro)
-        toggle.addEventListener('change', function () {
-          if (this.checked) {
-            // Activar Vista Registro
-            loginView.style.display = 'none';
-            registerView.style.display = 'block';
-            lblRegister.style.color = '#fff';
-            lblRegister.style.fontWeight = '600';
-            lblLogin.style.color = '#888';
-            lblLogin.style.fontWeight = 'normal';
-          } else {
-            // Activar Vista Login
-            registerView.style.display = 'none';
-            loginView.style.display = 'block';
-            lblLogin.style.color = '#fff';
-            lblLogin.style.fontWeight = '600';
-            lblRegister.style.color = '#888';
-            lblRegister.style.fontWeight = 'normal';
-          }
-        });
+  <!-- SweetAlert2 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
+  <!-- Bootstrap 5 Bundle JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/bootstrap.bundle.min.js"></script>
 
-        // 2. Validación interactiva en tiempo real para ambos formularios
-        const setupFormValidation = (formId) => {
-          const form = document.getElementById(formId);
-          const inputs = form.querySelectorAll('.form-control');
+  <!-- Lógica de Carga del Navbar y Switch Login/Registro -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // 1. Carga del Navbar Aislado (Shadow DOM)
+      const container = document.getElementById('navbar-container');
+      if (container) {
+        const shadow = container.attachShadow({ mode: 'open' });
 
-          function validarCampo(input) {
-            if (input.checkValidity()) {
-              input.classList.remove('is-invalid');
-              input.classList.add('is-valid');
-            } else {
-              input.classList.remove('is-valid');
-              input.classList.add('is-invalid');
-            }
-          }
+        Promise.all([
+          fetch('navbar.html').then(res => res.text()),
+          fetch('Styles/Styles.css').then(res => res.text())
+        ]).then(([html, css]) => {
+          shadow.innerHTML = `
+            <style>${css}</style>
+            ${html}
+          `;
 
-          inputs.forEach((input) => {
-            input.addEventListener('input', () => {
-              if (input.value.trim() !== '') validarCampo(input);
-              else input.classList.remove('is-valid', 'is-invalid');
-            });
-
-            input.addEventListener('blur', () => {
-              if (input.value.trim() !== '' || input.hasAttribute('required')) {
-                validarCampo(input);
+          // Forzar navegación de enlaces en Shadow DOM
+          shadow.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', (e) => {
+              const href = link.getAttribute('href');
+              if (href && href !== '#') {
+                e.preventDefault();
+                window.top.location.href = href;
               }
             });
           });
 
-          form.addEventListener('submit', (e) => {
-            inputs.forEach((i) => validarCampo(i));
-            if (!form.checkValidity()) {
-              e.preventDefault();
-              e.stopPropagation();
-            } else {
-              e.preventDefault();
-              const isReg = formId === 'registerForm';
-              Swal.fire({
-                title: isReg ? '¡Registro Exitoso!' : '¡Bienvenido!',
-                text: isReg
-                  ? 'Tu cuenta ha sido creada correctamente.'
-                  : 'Has iniciado sesión con éxito.',
-                icon: 'success',
-                confirmButtonColor: '#336699',
-                background: '#1a1a1a',
-                color: '#fff',
-              });
-            }
-          });
-        };
+        }).catch(err => console.error('Error cargando el navbar aislado:', err));
+      }
 
-        setupFormValidation('loginForm');
-        setupFormValidation('registerForm');
-      });
-    </script>
-  </body>
+      // 2. Control del Switch Toggle (Login / Registro)
+      const authToggle = document.getElementById('authToggle');
+      const loginForm = document.getElementById('loginForm');
+      const registerForm = document.getElementById('registerForm');
+      const labelLogin = document.getElementById('labelLogin');
+      const labelRegister = document.getElementById('labelRegister');
+
+      if (authToggle) {
+        authToggle.addEventListener('change', function () {
+          if (this.checked) {
+            // Mostrar Formulario de Registro
+            loginForm.style.display = 'none';
+            registerForm.style.display = 'block';
+            labelRegister.className = 'fw-semibold text-white';
+            labelLogin.className = 'fw-semibold text-white-50';
+          } else {
+            // Mostrar Formulario de Login
+            registerForm.style.display = 'none';
+            loginForm.style.display = 'block';
+            labelLogin.className = 'fw-semibold text-white';
+            labelRegister.className = 'fw-semibold text-white-50';
+          }
+        });
+      }
+    });
+  </script>
+
+  <!-- Script Externo de Validación (JS/login.js) -->
+  <script src="JS/login.js"></script>
+</body>
 </html>
