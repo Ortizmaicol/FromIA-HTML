@@ -1,4 +1,8 @@
 <?php
+$pageTitle = "FormAI - Panel de Administración";
+$extraCss  = "dashboard.css";
+$nombre    = $nombre ?? ($_SESSION['user_nombre'] ?? 'Administrador');
+
 require_once __DIR__ . '/../../layouts/header.php';
 ?>
 
@@ -19,7 +23,7 @@ require_once __DIR__ . '/../../layouts/header.php';
   <!-- Contenido Administrador -->
   <main class="main-panel">
     <h1 class="welcome-title">Panel de Control General ⚙️</h1>
-    <p class="welcome-subtitle">Sesión administrativa iniciada por <?= htmlspecialchars($nombre); ?></p>
+    <p class="welcome-subtitle">Sesión administrativa iniciada por <?= htmlspecialchars($nombre, ENT_QUOTES, 'UTF-8'); ?></p>
 
     <div class="stats-grid">
       <div class="stat-card-custom">
