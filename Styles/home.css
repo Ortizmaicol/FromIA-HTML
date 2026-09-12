@@ -1,0 +1,268 @@
+/* SECCIÓN HERO / BIENVENIDA */
+.Bienvenida {
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: #000000;
+  overflow: hidden;
+  padding: 40px 20px;
+}
+
+.Bienvenida .halo {
+  position: absolute;
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(139, 75, 242, 0.35) 0%, rgba(51, 102, 153, 0.2) 50%, transparent 70%);
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+.Bienvenida .content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Bienvenida .content-icon {
+  width: 130px;
+  height: auto;
+  margin-bottom: 24px;
+  filter: drop-shadow(0 0 25px rgba(139, 75, 242, 0.4));
+}
+
+.Bienvenida h1 {
+  font-size: clamp(2.8rem, 5vw, 4.2rem);
+  font-weight: 900;
+  margin-bottom: 12px;
+  color: #ffffff;
+}
+
+.Bienvenida .tagline {
+  color: #a0a0a0;
+  font-size: 1.05rem;
+  margin-bottom: 30px;
+}
+
+.Bienvenida .buttons {
+  display: flex;
+  gap: 14px;
+}
+
+.Bienvenida .btn-primary {
+  background-color: #336699;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #fff;
+  text-decoration: none;
+}
+
+.Bienvenida .btn-secondary {
+  background-color: #121215;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 10px 24px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* SECCIÓN MOCKUPS Y CARACTERÍSTICAS */
+.feature-section {
+  padding: 60px 20px 100px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.main-heading-container {
+  text-align: center;
+  max-width: 850px;
+  margin: 40px auto 80px;
+}
+
+.main-heading-container h2 {
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.2;
+  color: #ffffff;
+  margin-bottom: 20px;
+  letter-spacing: -0.5px;
+}
+
+.main-heading-container p {
+  color: #a0a0a0;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  line-height: 1.6;
+}
+
+.feature-row {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  margin-bottom: 100px;
+  flex-wrap: wrap;
+}
+
+.feature-row.reverse {
+  flex-direction: row-reverse;
+}
+
+.feature-info {
+  flex: 1;
+  min-width: 300px;
+}
+
+.feature-tag {
+  display: inline-block;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-size: 0.75rem;
+  padding: 6px 14px;
+  border-radius: 4px;
+  border: 1px solid #333;
+  margin-bottom: 18px;
+  font-weight: 600;
+}
+
+.feature-info h3 {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 18px;
+}
+
+.feature-info p {
+  color: #aaaaaa;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.feature-badges {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 25px;
+}
+
+.mini-badge {
+  background-color: #161616;
+  border: 1px solid #2a2a2a;
+  color: #ffffff;
+  font-size: 0.82rem;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.mockup-container {
+  flex: 1;
+  min-width: 320px;
+  background-color: #111111;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+}
+
+.mockup-item {
+  background-color: #1c1c1c;
+  border: 1px solid #2e2e2e;
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mockup-item:last-child { margin-bottom: 0; }
+.mockup-item .item-title { font-weight: 600; font-size: 0.95rem; color: #fff; }
+.mockup-item .item-sub { font-size: 0.75rem; color: #888; }
+.status-text { font-size: 0.85rem; color: #ffffff; font-weight: 500; }
+
+.radio-group {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.radio-box {
+  flex: 1;
+  background: #181818;
+  border: 1px solid #336699;
+  padding: 12px 14px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #ffffff;
+}
+
+.radio-box.inactive {
+  border-color: #2e2e2e;
+  color: #a0a0a0;
+}
+
+.dropzone {
+  border: 1.5px dashed #444;
+  border-radius: 6px;
+  padding: 30px 20px;
+  text-align: center;
+  color: #888;
+  font-size: 0.85rem;
+  margin-bottom: 18px;
+}
+
+.settings-mockup {
+  display: flex;
+  gap: 20px;
+  background: #111111;
+}
+
+.lang-list { 
+  flex: 1; 
+  border-right: 1px solid #2a2a2a; 
+  padding-right: 15px; 
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.lang-item { 
+  padding: 10px 14px; 
+  font-size: 0.88rem; 
+  color: #888; 
+  border-radius: 6px; 
+}
+
+.lang-item.active { 
+  background: #336699; 
+  color: #fff; 
+  font-weight: 600; 
+}
+
+.setting-panel { 
+  flex: 1.2; 
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center; 
+}
+
+@media (max-width: 768px) {
+  .feature-row, .feature-row.reverse {
+    flex-direction: column;
+    gap: 30px;
+  }
+}
