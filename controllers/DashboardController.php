@@ -44,6 +44,6 @@ class DashboardController {
         $extraCss  = "dashboard.css"; // Puedes crear también un dashboard-admin.css si requiere estilos propios
         $pageTitle = "FormAI - Panel de Administración";
 
-        require_once __DIR__ . '/../views/dashboard/admin/index.php';
+        require_once __DIR__ . '/../views/dashboard/administrador/index.php';
     }
 }
