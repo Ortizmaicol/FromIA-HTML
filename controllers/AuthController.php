@@ -51,11 +51,11 @@ class AuthController {
                 if (!empty($nombre) && !empty($apellido) && !empty($telefono) && !empty($email) && !empty($password)) {
                     $existe = $this->usuarioModel->obtenerPorEmail($email);
                     if ($existe) {
-                        $error = "Este correo electrÃ³nico ya se encuentra registrado.";
+                        $error = "Este correo electronico ya se encuentra registrado.";
                     } else {
                         $ok = $this->usuarioModel->registrar($nombre, $apellido, $telefono, $email, $password);
                         if ($ok) {
-                            $success = "Â¡Cuenta creada con Ã©xito! Ahora puedes iniciar sesiÃ³n.";
+                            $success = "¡Cuenta creada con éxito! Ahora puedes iniciar sesión.";
                         } else {
                             $error = "Hubo un error al registrar la cuenta.";
                         }
