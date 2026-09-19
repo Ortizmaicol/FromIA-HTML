@@ -12,7 +12,7 @@ require_once __DIR__ . '/../../layouts/header.php';
     <div>
       <div class="sidebar-group-title">GESTIÓN GENERAL</div>
       <ul class="sidebar-menu">
-        <li><a href="/FromIA/dashboard.php" class="active"><i class="bi bi-speedometer2"></i> Métricas Globales</a></li>
+        <li><a href="/dashboard.php" class="active"><i class="bi bi-speedometer2"></i> Métricas Globales</a></li>
         <li><a href="#"><i class="bi bi-people-fill"></i> Usuarios del Sistema</a></li>
         <li><a href="#"><i class="bi bi-credit-card-fill"></i> Historial de Pagos</a></li>
         <li><a href="#"><i class="bi bi-sliders"></i> Configuración</a></li>

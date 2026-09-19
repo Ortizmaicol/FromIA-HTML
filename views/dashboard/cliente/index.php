@@ -13,7 +13,7 @@ require_once __DIR__ . '/../../layouts/header.php';
     <div>
       <div class="sidebar-group-title">PRINCIPAL</div>
       <ul class="sidebar-menu">
-        <li><a href="/FromIA/dashboard.php" class="active"><i class="bi bi-house-door-fill"></i> Inicio</a></li>
+        <li><a href="/dashboard.php" class="active"><i class="bi bi-house-door-fill"></i> Inicio</a></li>
         <li><a href="#"><i class="bi bi-download"></i> Descargar App <span class="sidebar-badge-red">NUEVO</span></a></li>
         <li><a href="#"><i class="bi bi-display"></i> Prueba Web Gratuita</a></li>
       </ul>
@@ -21,7 +21,7 @@ require_once __DIR__ . '/../../layouts/header.php';
     <div>
       <div class="sidebar-group-title">MI CUENTA</div>
       <ul class="sidebar-menu">
-        <li><a href="/FromIA/membresias.php"><i class="bi bi-gem"></i> Mi Membresía</a></li>
+        <li><a href="/membresias.php"><i class="bi bi-gem"></i> Mi Membresía</a></li>
         <li><a href="#"><i class="bi bi-folder-fill"></i> Mis Proyectos <span class="sidebar-badge-count"><?= (int)$totalActivos; ?></span></a></li>
         <li><a href="#"><i class="bi bi-person-fill"></i> Mi Perfil</a></li>
       </ul>
@@ -31,7 +31,7 @@ require_once __DIR__ . '/../../layouts/header.php';
       <ul class="sidebar-menu">
         <li><a href="#"><i class="bi bi-bug-fill"></i> Reportar Problema</a></li>
         <li><a href="#"><i class="bi bi-question-circle-fill"></i> Soporte</a></li>
-        <li><a href="/FromIA/index.php" style="margin-top: 10px;"><i class="bi bi-globe"></i> Ir al sitio web</a></li>
+        <li><a href="/index.php" style="margin-top: 10px;"><i class="bi bi-globe"></i> Ir al sitio web</a></li>
       </ul>
     </div>
   </aside>

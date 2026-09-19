@@ -22,7 +22,7 @@ $isLogged = isset($_SESSION['user_id']);
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" />
 
   <!-- Hoja de Estilos Global -->
-  <link rel="stylesheet" href="/FromIA/Styles/Styles.css" />
+  <link rel="stylesheet" href="/Styles/Styles.css" />
 
   <!-- Hoja de Estilo Específica de la Vista (si está definida) -->
   <?php if (isset($extraCss) && is_array($extraCss)): ?>

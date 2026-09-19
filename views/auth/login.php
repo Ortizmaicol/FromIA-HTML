@@ -42,7 +42,7 @@ require_once __DIR__ . '/../layouts/header.php';
         <div class="brand-sub">FormAI</div>
 
         <!-- FORMULARIO 1: INICIAR SESIÓN -->
-        <form id="loginForm" method="POST" action="/FromIA/login.php" novalidate>
+        <form id="loginForm" method="POST" action="/login.php" novalidate>
           <input type="hidden" name="accion" value="login">
 
           <div class="mb-3">
@@ -65,7 +65,7 @@ require_once __DIR__ . '/../layouts/header.php';
         </form>
 
         <!-- FORMULARIO 2: REGISTRARSE -->
-        <form id="registerForm" method="POST" action="/FromIA/login.php" style="display: none;" novalidate>
+        <form id="registerForm" method="POST" action="/login.php" style="display: none;" novalidate>
           <input type="hidden" name="accion" value="registro">
 
           <div class="row g-2 mb-3">
@@ -112,7 +112,7 @@ require_once __DIR__ . '/../layouts/header.php';
 
       <!-- Columna Derecha con Gráfico de Moda -->
       <div class="col-12 col-lg-5 image-side">
-        <img src="/FromIA/Img/IconoFormAIDark.avif" alt="Icono FormAI" />
+        <img src="/Img/IconoFormAIDark.avif" alt="Icono FormAI" />
       </div>
 
     </div>
@@ -144,6 +144,6 @@ require_once __DIR__ . '/../layouts/header.php';
     }
   });
 </script>
-<script src="/FromIA/JS/login.js"></script>
+<script src="/JS/login.js"></script>
 
 <?php require_once __DIR__ . '/../layouts/footer.php'; ?>

@@ -11,7 +11,7 @@ class DashboardController {
 
         // 1. Validar autenticación
         if (!isset($_SESSION['user_id'])) {
-            header('Location: /FromIA/login.php');
+            header('Location: /login.php');
             exit;
         }
 
