@@ -37,8 +37,8 @@ require_once __DIR__ . '/../../layouts/header.php';
       <div class="sidebar-group-title">PRINCIPAL</div>
       <ul class="sidebar-menu">
         <li><a href="/FromIA-HTML/dashboard.php"><i class="bi bi-house-door-fill"></i> Inicio</a></li>
-        <li><a href="#"><i class="bi bi-download"></i> Descargar App <span class="sidebar-badge-red">NUEVO</span></a></li>
-        <li><a href="#"><i class="bi bi-display"></i> Prueba Web Gratuita</a></li>
+        <li><a href="/FromIA-HTML/dashboard.php?seccion=workspace"><i class="bi bi-vector-pen"></i> Aplicación <span class="sidebar-badge-red">NUEVO</span></a></li>
+        <li><a href="/FromIA-HTML/dashboard.php?seccion=workspace"><i class="bi bi-display"></i> Prueba Web Gratuita</a></li>
       </ul>
     </div>
     <div>
@@ -188,6 +188,13 @@ require_once __DIR__ . '/../../layouts/header.php';
 
               <div class="project-card-footer">
                 <div class="d-flex align-items-center gap-1">
+                  <!-- Botón Abrir en Aplicación de Patronaje -->
+                  <a href="/FromIA-HTML/dashboard.php?seccion=workspace&id_patron=<?= (int)$p['id_patron']; ?>" 
+                     class="btn btn-sm btn-outline-primary" 
+                     title="Abrir y diseñar en la Aplicación">
+                    <i class="bi bi-vector-pen"></i>
+                  </a>
+
                   <!-- Botón Editar -->
                   <button type="button" class="btn btn-sm btn-outline-light btn-editar-proyecto" 
                           data-bs-toggle="modal" 

@@ -16,8 +16,8 @@ require_once __DIR__ . '/../../layouts/header.php';
       <div class="sidebar-group-title">PRINCIPAL</div>
       <ul class="sidebar-menu">
         <li><a href="/FromIA-HTML/dashboard.php" class="active"><i class="bi bi-house-door-fill"></i> Inicio</a></li>
-        <li><a href="#"><i class="bi bi-download"></i> Descargar App <span class="sidebar-badge-red">NUEVO</span></a></li>
-        <li><a href="#"><i class="bi bi-display"></i> Prueba Web Gratuita</a></li>
+        <li><a href="/FromIA-HTML/dashboard.php?seccion=workspace"><i class="bi bi-vector-pen"></i> Aplicación <span class="sidebar-badge-red">NUEVO</span></a></li>
+        <li><a href="/FromIA-HTML/dashboard.php?seccion=workspace"><i class="bi bi-display"></i> Prueba Web Gratuita</a></li>
       </ul>
     </div>
     <div>

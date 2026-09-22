@@ -227,6 +227,103 @@ class DashboardController {
                         $mensajeError = "No se pudo procesar la suscripción. Por favor intenta nuevamente.";
                     }
                 }
+            } elseif ($accion === 'guardar_patron_workspace') {
+                $idPatronExistente = (int)($_POST['id_patron'] ?? 0);
+                $nombPatron = trim($_POST['nomb_patron'] ?? 'Patrón de Trazo');
+                $descPatron = trim($_POST['desc_patron'] ?? 'Creado desde la Aplicación de Patronaje FormAI');
+                $tipoPatron = trim($_POST['tipo_patron'] ?? 'patronaje');
+                $imagenBase64 = $_POST['imagen_base64'] ?? '';
+                $jsonTrazos = $_POST['archivo_json'] ?? '{}';
+                $esAjax = (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest') || isset($_POST['es_ajax']);
+
+                try {
+                    $ubicacion = '';
+                    if (!empty($imagenBase64) && strpos($imagenBase64, 'data:image') === 0) {
+                        $partes = explode(',', $imagenBase64);
+                        if (isset($partes[1])) {
+                            $dataImg = base64_decode($partes[1]);
+                            if ($dataImg !== false) {
+                                $targetDir = __DIR__ . '/../uploads/patrones/';
+                                if (!is_dir($targetDir)) {
+                                    @mkdir($targetDir, 0755, true);
+                                }
+                                $nombreArchivoImg = 'workspace_' . $idUsuario . '_' . time() . '_' . rand(100, 999) . '.png';
+                                file_put_contents($targetDir . $nombreArchivoImg, $dataImg);
+                                $ubicacion = 'uploads/patrones/' . $nombreArchivoImg;
+                            }
+                        }
+                    }
+
+                    $idResultado = false;
+                    if ($idPatronExistente > 0) {
+                        $patronExistente = $patronModel->obtenerPorIdYUsuario($idPatronExistente, $idUsuario);
+                        if ($patronExistente) {
+                            $dbConn = Database::getConnection();
+                            $sqlCampos = ["nomb_patron = :nomb", "desc_patron = :desc", "tipo_patron = :tipo"];
+                            $params = [
+                                ':nomb' => $nombPatron,
+                                ':desc' => $descPatron,
+                                ':tipo' => $tipoPatron,
+                                ':id'   => $idPatronExistente,
+                                ':uid'  => $idUsuario
+                            ];
+
+                            if (!empty($ubicacion)) {
+                                $sqlCampos[] = "ubicacion = :ubic";
+                                $params[':ubic'] = $ubicacion;
+                            }
+                            if (!empty($jsonTrazos) && $jsonTrazos !== '{}') {
+                                $sqlCampos[] = "archivo_json = :json";
+                                $params[':json'] = $jsonTrazos;
+                            }
+
+                            $sqlUpd = "UPDATE patron SET " . implode(', ', $sqlCampos) . " WHERE id_patron = :id AND id_usuario = :uid";
+                            $stmtUpd = $dbConn->prepare($sqlUpd);
+                            $stmtUpd->execute($params);
+
+                            $idResultado = $idPatronExistente;
+                            $mensajeExito = "¡Proyecto '" . htmlspecialchars($nombPatron, ENT_QUOTES, 'UTF-8') . "' actualizado con éxito!";
+                        } else {
+                            $idResultado = $patronModel->crear($idUsuario, $nombPatron, $descPatron, $tipoPatron, $ubicacion, $jsonTrazos);
+                            $mensajeExito = "¡Proyecto '" . htmlspecialchars($nombPatron, ENT_QUOTES, 'UTF-8') . "' guardado como nuevo en tus proyectos!";
+                        }
+                    } else {
+                        $idResultado = $patronModel->crear($idUsuario, $nombPatron, $descPatron, $tipoPatron, $ubicacion, $jsonTrazos);
+                        $mensajeExito = "¡Proyecto '" . htmlspecialchars($nombPatron, ENT_QUOTES, 'UTF-8') . "' guardado con éxito en tus proyectos!";
+                    }
+
+                    if ($esAjax) {
+                        if (ob_get_length()) {
+                            ob_clean();
+                        }
+                        if (!headers_sent()) {
+                            header('Content-Type: application/json; charset=utf-8');
+                        }
+                        echo json_encode([
+                            'ok'        => (bool)$idResultado,
+                            'id_patron' => $idResultado,
+                            'mensaje'   => $mensajeExito ?? 'Proyecto guardado correctamente.',
+                            'ubicacion' => $ubicacion
+                        ]);
+                        exit;
+                    }
+                } catch (Throwable $e) {
+                    if ($esAjax) {
+                        if (ob_get_length()) {
+                            ob_clean();
+                        }
+                        if (!headers_sent()) {
+                            header('Content-Type: application/json; charset=utf-8');
+                        }
+                        echo json_encode([
+                            'ok'      => false,
+                            'mensaje' => 'Error al procesar el guardado: ' . $e->getMessage()
+                        ]);
+                        exit;
+                    } else {
+                        $mensajeError = "Error al guardar el proyecto: " . $e->getMessage();
+                    }
+                }
             }
         }
 
@@ -251,6 +348,14 @@ class DashboardController {
         } elseif ($seccion === 'proyectos') {
             $pageTitle = "FormAI - Mis Proyectos";
             require __DIR__ . '/../views/dashboard/cliente/proyectos.php';
+        } elseif ($seccion === 'workspace') {
+            $idPatronCargar = (int)($_GET['id_patron'] ?? 0);
+            $patronCargado  = null;
+            if ($idPatronCargar > 0) {
+                $patronCargado = $patronModel->obtenerPorIdYUsuario($idPatronCargar, $idUsuario);
+            }
+            $pageTitle = "FormAI - Aplicación";
+            require __DIR__ . '/../views/dashboard/cliente/workspace.php';
         } else {
             $pageTitle = "FormAI - Mi Espacio";
             require __DIR__ . '/../views/dashboard/cliente/index.php';
