@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 $pageTitle = "FormAI - IniciarSesion/Registrarse";
 $extraCss  = "auth.css";
 require_once __DIR__ . '/../layouts/header.php';
@@ -42,14 +42,14 @@ require_once __DIR__ . '/../layouts/header.php';
         <div class="brand-sub">FormAI</div>
 
         <!-- FORMULARIO 1: INICIAR SESIÓN -->
-        <form id="loginForm" method="POST" action="/FromIA/login.php" novalidate>
+        <form id="loginForm" method="POST" action="/FromIA-HTML/login.php" novalidate>
           <input type="hidden" name="accion" value="login">
 
           <div class="mb-3">
             <label for="loginEmail" class="custom-label">
-              <i class="bi bi-envelope"></i> Correo
+              <i class="bi bi-envelope"></i> Correo Electrónico
             </label>
-            <input type="email" name="email" class="form-control custom-input" id="loginEmail" placeholder="FormAI@gmail.com" required />
+            <input type="email" name="email" class="form-control custom-input" id="loginEmail" placeholder="usuario@ejemplo.com" required autocomplete="email" />
             <div class="invalid-feedback"></div>
           </div>
 
@@ -57,7 +57,7 @@ require_once __DIR__ . '/../layouts/header.php';
             <label for="loginPassword" class="custom-label">
               <i class="bi bi-lock"></i> Contraseña
             </label>
-            <input type="password" name="password" class="form-control custom-input" id="loginPassword" placeholder="**********" required />
+            <input type="password" name="password" class="form-control custom-input" id="loginPassword" placeholder="••••••••" required autocomplete="current-password" />
             <div class="invalid-feedback"></div>
           </div>
 
@@ -65,43 +65,43 @@ require_once __DIR__ . '/../layouts/header.php';
         </form>
 
         <!-- FORMULARIO 2: REGISTRARSE -->
-        <form id="registerForm" method="POST" action="/FromIA/login.php" style="display: none;" novalidate>
+        <form id="registerForm" method="POST" action="/FromIA-HTML/login.php" style="display: none;" novalidate>
           <input type="hidden" name="accion" value="registro">
 
           <div class="row g-2 mb-3">
             <div class="col-6">
               <label for="regNombre" class="custom-label">Nombre</label>
-              <input type="text" name="nombre" class="form-control custom-input" id="regNombre" placeholder="Laura" required />
+              <input type="text" name="nombre" class="form-control custom-input" id="regNombre" placeholder="Tu nombre" required autocomplete="given-name" />
               <div class="invalid-feedback"></div>
             </div>
             <div class="col-6">
               <label for="regApellido" class="custom-label">Apellido</label>
-              <input type="text" name="apellido" class="form-control custom-input" id="regApellido" placeholder="Díaz" required />
+              <input type="text" name="apellido" class="form-control custom-input" id="regApellido" placeholder="Tu apellido" required autocomplete="family-name" />
               <div class="invalid-feedback"></div>
             </div>
           </div>
 
           <div class="mb-3">
             <label for="regTelefono" class="custom-label">Teléfono</label>
-            <input type="tel" name="telefono" class="form-control custom-input" id="regTelefono" placeholder="3001234567" required />
+            <input type="tel" name="telefono" class="form-control custom-input" id="regTelefono" placeholder="Ej: 3001234567" required autocomplete="tel" />
             <div class="invalid-feedback"></div>
           </div>
 
           <div class="mb-3">
             <label for="regEmail" class="custom-label">Correo Electrónico</label>
-            <input type="email" name="email" class="form-control custom-input" id="regEmail" placeholder="usuario@gmail.com" required />
+            <input type="email" name="email" class="form-control custom-input" id="regEmail" placeholder="tu_correo@ejemplo.com" required autocomplete="email" />
             <div class="invalid-feedback"></div>
           </div>
 
           <div class="mb-3">
             <label for="regPassword" class="custom-label">Contraseña</label>
-            <input type="password" name="password" class="form-control custom-input" id="regPassword" placeholder="Mínimo 8 caracteres" required />
+            <input type="password" name="password" class="form-control custom-input" id="regPassword" placeholder="Mínimo 8 caracteres (A-z, 0-9)" required autocomplete="new-password" />
             <div class="invalid-feedback"></div>
           </div>
 
           <div class="mb-4">
             <label for="regConfirmPassword" class="custom-label">Confirmar Contraseña</label>
-            <input type="password" class="form-control custom-input" id="regConfirmPassword" placeholder="Repite tu contraseña" required />
+            <input type="password" class="form-control custom-input" id="regConfirmPassword" placeholder="Repite tu contraseña" required autocomplete="new-password" />
             <div class="invalid-feedback"></div>
           </div>
 
@@ -112,7 +112,7 @@ require_once __DIR__ . '/../layouts/header.php';
 
       <!-- Columna Derecha con Gráfico de Moda -->
       <div class="col-12 col-lg-5 image-side">
-        <img src="/FromIA/Img/IconoFormAIDark.avif" alt="Icono FormAI" />
+        <img src="/FromIA-HTML/Img/IconoFormAIDark.avif" alt="Icono FormAI" />
       </div>
 
     </div>
@@ -144,6 +144,6 @@ require_once __DIR__ . '/../layouts/header.php';
     }
   });
 </script>
-<script src="/FromIA/JS/login.js"></script>
+<script src="/FromIA-HTML/JS/login.js"></script>
 
 <?php require_once __DIR__ . '/../layouts/footer.php'; ?>

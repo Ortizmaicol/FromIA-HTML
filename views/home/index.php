@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 $pageTitle = "FormAI - Soluciones de Creación de Patrones";
 $extraCss  = "home.css";
 require_once __DIR__ . '/../layouts/header.php';
@@ -27,11 +27,11 @@ require_once __DIR__ . '/../layouts/header.php';
   </div>
 
   <div class="content">
-    <img class="content-icon" src="/FromIA/Img/IconoFormAIDark.avif" alt="IconoFormAI">
+    <img class="content-icon" src="/FromIA-HTML/Img/IconoFormAIDark.avif" alt="IconoFormAI">
     <h1>Form-AI</h1>
     <p class="tagline">Donde la moda y la tecnología se unen en cada puntada.</p>
     <div class="buttons">
-      <a href="/FromIA/membresias.php" class="btn btn-primary">Membresias ↗</a>
+      <a href="/FromIA-HTML/membresias.php" class="btn btn-primary">Membresias ↗</a>
       <a href="#" class="btn btn-secondary">Descargas</a>
     </div>
   </div>

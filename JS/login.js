@@ -1,5 +1,5 @@
-﻿const patrones = {
-  textoNombre: /^[a-zA-ZÃ¡Ã©Ã­Ã³ÃºÃÃ‰ÃÃ“ÃšÃ±Ã‘\s]{2,50}$/,
+const patrones = {
+  textoNombre: /^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]{2,50}$/,
   telefono: /^[0-9]{7,10}$/,
   email: /^[a-zA-Z0-9._%+-]+@(gmail|outlook|hotmail|yahoo|icloud|live)\.(com|net|es|co|org)$/i,
   password: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/
@@ -29,20 +29,20 @@ const setupFormValidation = (formId) => {
         }
       } else if (input.id === 'regTelefono') {
         if (!patrones.telefono.test(valor)) {
-          return 'El telÃ©fono debe contener entre 7 y 10 dÃ­gitos numÃ©ricos.';
+          return 'El teléfono debe contener entre 7 y 10 dígitos numéricos.';
         }
       } else if (input.id === 'regEmail') {
         if (!patrones.email.test(valor)) {
-          return 'Ingresa un correo de un dominio vÃ¡lido (gmail, outlook, hotmail, etc.).';
+          return 'Ingresa un correo de un dominio válido (gmail, outlook, hotmail, etc.).';
         }
       } else if (input.id === 'regPassword') {
         if (!patrones.password.test(valor)) {
-          return 'MÃ­nimo 8 caracteres, una mayÃºscula, una minÃºscula y un nÃºmero.';
+          return 'Mínimo 8 caracteres, una mayúscula, una minúscula y un número.';
         }
       } else if (input.id === 'regConfirmPassword') {
         const pass = document.getElementById('regPassword');
         if (!pass || valor !== pass.value.trim()) {
-          return 'Las contraseÃ±as no coinciden.';
+          return 'Las contraseñas no coinciden.';
         }
       }
     }

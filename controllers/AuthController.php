@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 require_once __DIR__ . '/../models/UsuarioModel.php';
 
 class AuthController {
@@ -35,6 +35,7 @@ class AuthController {
                     $_SESSION['user_rol'] = $usuario['rol'];
 
                     $this->usuarioModel->actualizarUltimoLogin($usuario['id_usuario']);
+                    $this->usuarioModel->registrarSesionActiva($usuario['id_usuario']);
 
                     header('Location: dashboard.php');
                     exit;
@@ -71,6 +72,9 @@ class AuthController {
 
     public function logout() {
         if (session_status() === PHP_SESSION_NONE) session_start();
+        if (isset($_SESSION['user_id'])) {
+            $this->usuarioModel->revocarSesiones($_SESSION['user_id']);
+        }
         session_unset();
         session_destroy();
         header('Location: login.php');

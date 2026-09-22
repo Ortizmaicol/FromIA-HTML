@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
@@ -22,15 +22,15 @@ $isLogged = isset($_SESSION['user_id']);
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" />
 
   <!-- Hoja de Estilos Global -->
-  <link rel="stylesheet" href="/FromIA/Styles/Styles.css" />
+  <link rel="stylesheet" href="/FromIA-HTML/Styles/Styles.css" />
 
   <!-- Hoja de Estilo Específica de la Vista (si está definida) -->
   <?php if (isset($extraCss) && is_array($extraCss)): ?>
     <?php foreach ($extraCss as $cssFile): ?>
-      <link rel="stylesheet" href="/FromIA/Styles/<?= htmlspecialchars($cssFile); ?>" />
+      <link rel="stylesheet" href="/FromIA-HTML/Styles/<?= htmlspecialchars($cssFile); ?>" />
     <?php endforeach; ?>
   <?php elseif (isset($extraCss) && is_string($extraCss)): ?>
-    <link rel="stylesheet" href="/FromIA/Styles/<?= htmlspecialchars($extraCss); ?>" />
+    <link rel="stylesheet" href="/FromIA-HTML/Styles/<?= htmlspecialchars($extraCss); ?>" />
   <?php endif; ?>
 </head>
 <body>
@@ -38,33 +38,33 @@ $isLogged = isset($_SESSION['user_id']);
 <header class="Encabezado">
   <div class="Encabezado-navegacion">
     <h1 class="Encabezado-navegacion-Title">
-      <a href="/FromIA/index.php">Form-AI</a>
+      <a href="/FromIA-HTML/index.php">Form-AI</a>
     </h1>
 
     <nav class="Encabezado-navegacion-Menu">
       <div class="Menu-Item">
-        <a href="/FromIA/index.php">
+        <a href="/FromIA-HTML/index.php">
           Inicio
           <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
         </a>
       </div>
 
       <div class="Menu-Item">
-        <a href="/FromIA/500.php">
+        <a href="/FromIA-HTML/500.php">
           Nosotros
           <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
         </a>
       </div>
 
       <div class="Menu-Item">
-        <a href="/FromIA/membresias.php">
+        <a href="/FromIA-HTML/membresias.php">
           Membresias
           <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
         </a>
       </div>
 
       <div class="Menu-Item">
-        <a href="/FromIA/404.php">
+        <a href="/FromIA-HTML/404.php">
           Contáctanos
           <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
         </a>
@@ -72,11 +72,11 @@ $isLogged = isset($_SESSION['user_id']);
 
       <?php if ($isLogged): ?>
         <div class="Menu-Item-Button">
-          <a href="/FromIA/logout.php">Cerrar Sesión</a>
+          <a href="/FromIA-HTML/logout.php">Cerrar Sesión</a>
         </div>
       <?php else: ?>
         <div class="Menu-Item-Button">
-          <a href="/FromIA/login.php">IniciarSesión/Registrarse</a>
+          <a href="/FromIA-HTML/login.php">IniciarSesión/Registrarse</a>
         </div>
       <?php endif; ?>
     </nav>
